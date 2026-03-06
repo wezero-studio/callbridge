@@ -53,7 +53,16 @@ const testimonials: Testimonial[] = [
 
 export default function Testimonials() {
     const [idx, setIdx] = useState(0);
-    const visible = [testimonials[idx % testimonials.length], testimonials[(idx + 1) % testimonials.length]];
+
+    const handleNav = (direction: 'prev' | 'next') => {
+        if (direction === 'next') {
+            setIdx((p) => (p + 1) % testimonials.length);
+        } else {
+            setIdx((p) => (p - 1 + testimonials.length) % testimonials.length);
+        }
+    };
+
+    const total = testimonials.length;
 
     return (
         <section className={styles.section}>
@@ -61,21 +70,36 @@ export default function Testimonials() {
                 <div className={styles.left}>
                     <h2 className={styles.heading}>WHY BUSINESSES LOVE CALL BRIDGE</h2>
                     <div className={styles.navBtns}>
-                        <button className={styles.navBtn} onClick={() => setIdx((p) => (p - 1 + testimonials.length) % testimonials.length)}>←</button>
-                        <button className={styles.navBtn} onClick={() => setIdx((p) => (p + 1) % testimonials.length)}>→</button>
+                        <button className={styles.navBtn} onClick={() => handleNav('prev')}>←</button>
+                        <button className={styles.navBtn} onClick={() => handleNav('next')}>→</button>
                     </div>
                 </div>
-                <div className={styles.cards}>
-                    {visible.map((t, i) => (
-                        <div className={styles.card} key={i}>
-                            <div className={styles.logo} style={{ background: t.logoBg }}>
-                                <span style={{ fontSize: 11, fontWeight: 800, color: t.logoColor }}>{t.logoText}</span>
+                <div className={styles.cardsWrapper}>
+                    {testimonials.map((t, i) => {
+                        // Calculate relative distance from current index
+                        let dist = (i - idx + total) % total;
+
+                        let positionClass = styles.posNext; // default for hidden right edge items
+
+                        if (dist === 0) {
+                            positionClass = styles.pos0; // Left visible
+                        } else if (dist === 1) {
+                            positionClass = styles.pos1; // Right visible
+                        } else if (dist === total - 1) {
+                            positionClass = styles.posPrev; // Just exited Left (down and back)
+                        }
+
+                        return (
+                            <div className={`${styles.card} ${positionClass}`} key={i}>
+                                <div className={styles.logo} style={{ background: t.logoBg }}>
+                                    <span style={{ fontSize: 11, fontWeight: 800, color: t.logoColor }}>{t.logoText}</span>
+                                </div>
+                                <p className={styles.role}>{t.role}</p>
+                                <h3 className={styles.name}>{t.name}</h3>
+                                <p className={styles.text}>{t.text}</p>
                             </div>
-                            <p className={styles.role}>{t.role}</p>
-                            <h3 className={styles.name}>{t.name}</h3>
-                            <p className={styles.text}>{t.text}</p>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             </div>
         </section>

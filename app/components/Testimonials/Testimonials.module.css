@@ -45,10 +45,64 @@
     border-color: #666;
 }
 
-.cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+.cardsWrapper {
+    position: relative;
+    width: 100%;
+    /* Fixed height to contain absolute cards - reduced to make them smaller */
+    height: 320px;
+    perspective: 1000px;
+}
+
+.card {
+    position: absolute;
+    top: 0;
+    width: calc(50% - 10px);
+    height: 100%;
+    background: #F0EDE6;
+    border-radius: 24px;
+    padding: 24px 28px;
+    transition: all 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Left Visible Card */
+.pos0 {
+    left: 0;
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    z-index: 3;
+    pointer-events: auto;
+}
+
+/* Right Visible Card */
+.pos1 {
+    left: calc(50% + 10px);
+    transform: translateY(0) scale(1);
+    opacity: 1;
+    z-index: 3;
+    pointer-events: auto;
+}
+
+/* Outgoing Card (Down and Back) */
+.posPrev {
+    left: 0;
+    transform: translateY(60px) scale(0.85);
+    /* Moves down and scales down */
+    opacity: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* Incoming Card (Sliding in from Right) */
+.posNext {
+    left: calc(100% + 40px);
+    transform: translateY(0) scale(1);
+    opacity: 0;
+    /* Fades in as it enters */
+    z-index: 2;
+    pointer-events: none;
 }
 
 .card {
@@ -84,6 +138,7 @@
     font-size: 13px;
     color: #444;
     line-height: 1.7;
+    flex-grow: 1;
 }
 
 @media (max-width: 1024px) {
@@ -95,11 +150,16 @@
         grid-template-columns: 1fr;
     }
 
-    .cards {
-        grid-template-columns: 1fr;
+    .card {
+        width: 100%;
     }
 
-    .card:nth-child(2) {
-        display: none;
+    /* On mobile, only one card is visible at pos0. 
+       pos1 acts as an incoming/outgoing hidden card. */
+    .pos1 {
+        left: 100%;
+        transform: translateY(0) scale(1);
+        opacity: 0;
+        pointer-events: none;
     }
 }
