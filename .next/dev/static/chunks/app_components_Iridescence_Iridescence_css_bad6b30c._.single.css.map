@@ -1,6 +1,0 @@
-{
-  "version": 3,
-  "sources": [],
-  "sections": [
-    {"offset": {"line": 1, "column": 0}, "map": {"version":3,"sources":["turbopack:///[project]/app/components/Iridescence/Iridescence.css"],"sourcesContent":[".iridescence-container {\r\n    width: 100%;\r\n    height: 100%;\r\n}"],"names":[],"mappings":"AAAA"}}]
-}
