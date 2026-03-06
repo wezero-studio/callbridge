@@ -170,13 +170,13 @@ export default function HowItWorks() {
                                 <span className={styles.cardLabel}>{card.label}</span>
                                 <span className={styles.cardIcon}><card.Icon /></span>
                             </div>
+                            <p className={styles.cardDesc}>{card.desc}</p>
                             <div
                                 className={styles.cardValue}
                                 style={{ color: card.color, fontSize: card.valueSize }}
                             >
                                 {card.step}
                             </div>
-                            <p className={styles.cardDesc}>{card.desc}</p>
                         </div>
                     ))}
                 </div>
