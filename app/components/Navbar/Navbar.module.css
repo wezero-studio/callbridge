@@ -159,5 +159,16 @@
 
     .nav {
         padding: 0 16px;
+        height: 54px;
+    }
+
+    .brandName {
+        font-size: 18px;
+    }
+
+    .btnLogin,
+    .btnApply {
+        padding: 6px 14px;
+        font-size: 12px;
     }
 }

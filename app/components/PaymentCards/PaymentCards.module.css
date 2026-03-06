@@ -1,146 +1,222 @@
 .section {
     background: #000;
-    padding: 100px 60px;
+    padding: 100px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.stickyContainer {
+    /* Container still exists in TSX, but we disable sticky behavior so it acts as a normal wrapper */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 
 .header {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 40px;
+    gap: 80px;
     align-items: end;
-    margin-bottom: 56px;
+    margin-bottom: 72px;
+    padding: 0 60px;
+}
+
+.titleWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.eyebrow {
+    display: inline-flex;
+    padding: 6px 16px;
+    background: rgba(253, 221, 35, 0.15);
+    color: var(--yellow);
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: lowercase;
+    width: fit-content;
+    letter-spacing: 0.02em;
 }
 
 .title {
     font-family: 'Anton', 'Inter', sans-serif;
-    font-size: clamp(40px, 5.5vw, 72px);
+    font-size: clamp(48px, 6vw, 92px);
     font-weight: 900;
     text-transform: uppercase;
-    line-height: 0.92;
+    line-height: 0.88;
+    letter-spacing: 0.02em;
     color: #fff;
+    margin: 0;
 }
 
 .desc {
-    font-size: 15px;
+    font-size: 16px;
     color: #aaa;
     line-height: 1.65;
-    max-width: 420px;
+    max-width: 480px;
+    margin: 0;
 }
 
-.grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
+/* ─── CARDS ──────────────────────────────────────────── */
+.cardsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    padding: 0 60px;
+    max-width: 1150px;
+    margin: 0 auto;
 }
 
 .card {
-    background: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.4);
+    display: flex;
+    align-items: stretch;
+    /* <- makes both elements equal height */
+    gap: 0;
+    /* edge-to-edge: no gap between text and image */
+    position: relative;
+    overflow: hidden;
     border-radius: 24px;
-    padding: 32px;
-    display: grid;
-    grid-template-columns: 1fr 280px;
-    gap: 32px;
-    align-items: center;
-    transition: border-color 0.2s, transform 0.2s;
-    min-height: 380px;
 }
 
-.card:hover {
-    border-color: var(--yellow);
-    transform: translateY(-4px);
+.card:nth-child(even) {
+    flex-direction: row-reverse;
 }
 
+/* ─── TEXT BOX: ~60% width ───────────────────────────── */
 .cardBody {
-    text-align: left;
+    flex: 3;
+    padding: 14px 28px;
+    border: 1px solid #fff;
+    border-radius: 24px;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    /*
+     * Overlap → spread animation:
+     * Starts shifted RIGHT (toward image center), spreads left to final pos.
+     * (1 - progress) * 260px → at progress=0, shifts 260px right (overlaps)
+     *                        → at progress=1, shifts 0 (final position)
+     */
+    transform: translateX(calc((1 - var(--scroll-progress, 0)) * 120px));
+    transition: transform 0.08s linear;
+}
+
+.card:nth-child(even) .cardBody {
+    transform: translateX(calc((1 - var(--scroll-progress, 0)) * -120px));
+}
+
+.cardTitle {
+    font-size: clamp(20px, 2.2vw, 28px);
+    font-weight: 600;
+    color: #fff;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.cardDesc {
+    font-size: 13px;
+    color: #888;
+    line-height: 1.7;
+    margin: 0;
+}
+
+/* ─── IMAGE BOX: ~40% width, same height as text box ─── */
+.cardImgWrapper {
+    flex: 2;
+    position: relative;
+    /*
+     * Starts shifted LEFT (toward text center), spreads right to final pos.
+     * (1 - progress) * -200px → at progress=0, overlaps text
+     *                         → at progress=1, sits in its final place
+     */
+    transform: translateX(calc((1 - var(--scroll-progress, 0)) * -90px));
+    transition: transform 0.08s linear;
+}
+
+.card:nth-child(even) .cardImgWrapper {
+    transform: translateX(calc((1 - var(--scroll-progress, 0)) * 90px));
 }
 
 .cardImg {
-    width: 280px;
-    height: 280px;
-    border-radius: 16px;
-    background: transparent;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
+    width: 100%;
+    height: 100%;
+    /* stadium/oval shape — not extreme circle but nicely rounded */
+    border-radius: 120px;
     overflow: hidden;
+    background: #111;
 }
 
 .image {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 16px;
+    transition: transform 0.8s cubic-bezier(0.2, 0, 0.2, 1);
 }
 
-.tag {
-    display: inline-block;
-    font-size: 13px;
-    font-weight: 700;
-    padding: 6px 14px;
-    border-radius: 999px;
-    border: 1px solid var(--yellow);
-    color: var(--yellow);
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
+.card:hover .image {
+    transform: scale(1.05);
 }
 
-.cardTitle {
-    font-size: 30px;
-    font-weight: 600;
-    color: #fff;
-    margin-bottom: 12px;
-}
-
-.cardDesc {
-    font-size: 13px;
-    color: #888;
-    line-height: 1.65;
-    margin-bottom: 18px;
-}
-
-.linkArrow {
-    font-size: 14px;
-    font-weight: 600;
-    color: #fff;
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    transition: color 0.2s;
-    margin-top: 10px;
-}
-
-.linkArrow::after {
-    content: ' →';
-}
-
-.linkArrow:hover {
-    color: var(--yellow);
-}
-
+/* ─── RESPONSIVE ──────────────────────────────────────── */
 @media (max-width: 1024px) {
     .section {
-        padding: 70px 32px;
+        padding: 80px 0;
     }
 
     .header {
         grid-template-columns: 1fr;
+        gap: 30px;
     }
 
-    .grid {
-        grid-template-columns: 1fr;
+    .card,
+    .card:nth-child(even) {
+        flex-direction: column !important;
+        gap: 20px;
+    }
+
+    .cardBody,
+    .cardImgWrapper {
+        transform: none !important;
+        opacity: 1 !important;
+        flex: none !important;
+        width: 100%;
+    }
+
+    .cardImgWrapper {
+        height: 280px;
+        order: -1;
+    }
+
+    .cardImg {
+        border-radius: 32px;
     }
 }
 
 @media (max-width: 640px) {
-    .card {
-        grid-template-columns: 1fr;
+    .section {
+        padding: 60px 0;
     }
 
-    .cardImg {
-        width: 100%;
-        height: 240px;
+    .cardsContainer,
+    .header {
+        padding: 0 20px;
+    }
+
+    .title {
+        font-size: 40px;
+    }
+
+    .cardBody {
+        padding: 24px 28px;
+        border-radius: 18px;
+    }
+
+    .cardImgWrapper {
+        height: 220px;
     }
 }
