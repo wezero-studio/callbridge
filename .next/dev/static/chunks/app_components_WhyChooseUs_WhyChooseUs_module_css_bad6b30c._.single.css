@@ -1,0 +1,246 @@
+/* [project]/app/components/WhyChooseUs/WhyChooseUs.module.css [app-client] (css) */
+.WhyChooseUs-module__q2gvwa__section {
+  background: #000;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+
+.WhyChooseUs-module__q2gvwa__header {
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  margin-bottom: 30px;
+  display: flex;
+}
+
+.WhyChooseUs-module__q2gvwa__tag {
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: #000;
+  background: gold;
+  border-radius: 999px;
+  margin-bottom: 12px;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 700;
+  display: inline-block;
+}
+
+.WhyChooseUs-module__q2gvwa__title {
+  text-transform: uppercase;
+  color: #fff;
+  margin: 0;
+  font-family: Anton, Inter, sans-serif;
+  font-size: clamp(32px, 3.5vw, 56px);
+  font-weight: 900;
+  line-height: .92;
+}
+
+.WhyChooseUs-module__q2gvwa__desc {
+  color: #aaa;
+  max-width: 400px;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.WhyChooseUs-module__q2gvwa__grid {
+  grid-template-columns: 1fr 1.3fr;
+  gap: 16px;
+  display: grid;
+}
+
+.WhyChooseUs-module__q2gvwa__colLeft, .WhyChooseUs-module__q2gvwa__colRight {
+  flex-direction: column;
+  gap: 16px;
+  display: flex;
+}
+
+.WhyChooseUs-module__q2gvwa__topRightRow {
+  grid-template-columns: 1fr 1fr auto;
+  gap: 16px;
+  display: grid;
+}
+
+.WhyChooseUs-module__q2gvwa__bottomRightRow {
+  flex: 1;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  display: grid;
+}
+
+.WhyChooseUs-module__q2gvwa__card {
+  cursor: pointer;
+  background: #000;
+  border: 1px solid #fff;
+  border-radius: 32px;
+  flex-direction: column;
+  justify-content: center;
+  padding: 32px;
+  transition: border-color .4s;
+  display: flex;
+  position: relative;
+  overflow: hidden;
+}
+
+.WhyChooseUs-module__q2gvwa__pillCard {
+  border-radius: 100px;
+  align-items: center;
+  padding: 20px;
+}
+
+.WhyChooseUs-module__q2gvwa__largeCenterCard {
+  border-radius: 32px;
+  flex: 1;
+  justify-content: center;
+}
+
+.WhyChooseUs-module__q2gvwa__card:hover {
+  border-color: #000;
+}
+
+.WhyChooseUs-module__q2gvwa__cardContent {
+  z-index: 1;
+  position: relative;
+}
+
+.WhyChooseUs-module__q2gvwa__cardTitle {
+  letter-spacing: -.01em;
+  color: #fff;
+  margin-bottom: 14px;
+  font-size: 22px;
+  font-weight: 500;
+  transition: color .3s .15s;
+}
+
+.WhyChooseUs-module__q2gvwa__cardTitleCenter {
+  color: #fff;
+  text-align: center;
+  margin: 0;
+  font-size: 18px;
+  font-weight: 500;
+  transition: color .3s .15s;
+}
+
+.WhyChooseUs-module__q2gvwa__card:hover .WhyChooseUs-module__q2gvwa__cardTitle, .WhyChooseUs-module__q2gvwa__card:hover .WhyChooseUs-module__q2gvwa__cardTitleCenter {
+  color: #000;
+}
+
+.WhyChooseUs-module__q2gvwa__cardBody {
+  color: #aaa;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.65;
+  transition: color .3s .1s;
+}
+
+.WhyChooseUs-module__q2gvwa__card:hover .WhyChooseUs-module__q2gvwa__cardBody {
+  color: #111;
+}
+
+.WhyChooseUs-module__q2gvwa__iconGrid {
+  grid-template-rows: repeat(3, auto);
+  grid-template-columns: 1fr;
+  gap: 8px;
+  display: grid;
+}
+
+.WhyChooseUs-module__q2gvwa__topRightRow .WhyChooseUs-module__q2gvwa__iconGrid {
+  grid-template-rows: auto auto;
+  grid-template-columns: auto auto;
+}
+
+.WhyChooseUs-module__q2gvwa__topRightRow .WhyChooseUs-module__q2gvwa__iconGrid .WhyChooseUs-module__q2gvwa__iconCircle:first-child {
+  grid-area: 1 / 1 / 2 / 2;
+}
+
+.WhyChooseUs-module__q2gvwa__topRightRow .WhyChooseUs-module__q2gvwa__iconGrid .WhyChooseUs-module__q2gvwa__iconCircle:nth-child(2) {
+  grid-area: 1 / 2 / 2 / 3;
+}
+
+.WhyChooseUs-module__q2gvwa__topRightRow .WhyChooseUs-module__q2gvwa__iconGrid .WhyChooseUs-module__q2gvwa__iconCircle:nth-child(3) {
+  grid-area: 2 / 2 / 3 / 3;
+}
+
+.WhyChooseUs-module__q2gvwa__iconCircle {
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  height: 60px;
+  transition: background .4s, color .4s;
+  display: flex;
+}
+
+.WhyChooseUs-module__q2gvwa__iconCircle:hover {
+  color: #000;
+  cursor: pointer;
+  background: #fff;
+}
+
+.WhyChooseUs-module__q2gvwa__verticalBrandCard {
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+  color: #fff;
+  letter-spacing: .1em;
+  border: 1px solid #fff;
+  border-radius: 30px;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+  padding: 30px 0;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+}
+
+.WhyChooseUs-module__q2gvwa__sweep {
+  z-index: 0;
+  clip-path: circle(0% at 10% 90%);
+  pointer-events: none;
+  border-radius: inherit;
+  background: #fff;
+  transition: clip-path .7s cubic-bezier(.4, 0, .2, 1);
+  position: absolute;
+  inset: 0;
+}
+
+.WhyChooseUs-module__q2gvwa__card:hover .WhyChooseUs-module__q2gvwa__sweep {
+  clip-path: circle(180% at 10% 90%);
+}
+
+@media (max-width: 1024px) {
+  .WhyChooseUs-module__q2gvwa__section {
+    padding: 70px 32px;
+  }
+
+  .WhyChooseUs-module__q2gvwa__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 24px;
+  }
+
+  .WhyChooseUs-module__q2gvwa__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .WhyChooseUs-module__q2gvwa__topRightRow {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .WhyChooseUs-module__q2gvwa__iconGrid, .WhyChooseUs-module__q2gvwa__verticalBrandCard {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .WhyChooseUs-module__q2gvwa__card {
+    border-radius: 30px;
+    padding: 32px 24px;
+  }
+}
+
+/*# sourceMappingURL=app_components_WhyChooseUs_WhyChooseUs_module_css_bad6b30c._.single.css.map*/

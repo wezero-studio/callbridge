@@ -1,0 +1,78 @@
+/* [project]/app/components/MarketingSolutions/MarketingSolutions.module.css [app-client] (css) */
+.MarketingSolutions-module__hxUPaG__section {
+  background: #000;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 80px;
+  padding: 80px 60px;
+  display: grid;
+}
+
+.MarketingSolutions-module__hxUPaG__imageBox {
+  aspect-ratio: 4 / 5;
+  background: #1a1a1a;
+  border-radius: 24px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  overflow: hidden;
+}
+
+.MarketingSolutions-module__hxUPaG__imagePlaceholder {
+  font-size: 100px;
+}
+
+.MarketingSolutions-module__hxUPaG__tag {
+  color: #b8e000;
+  background: #1a2a00;
+  border-radius: 999px;
+  margin-bottom: 20px;
+  padding: 6px 16px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.MarketingSolutions-module__hxUPaG__title {
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 20px;
+  font-family: Anton, Inter, sans-serif;
+  font-size: clamp(44px, 5.5vw, 76px);
+  font-weight: 900;
+  line-height: .92;
+}
+
+.MarketingSolutions-module__hxUPaG__desc {
+  color: #aaa;
+  max-width: 380px;
+  margin-bottom: 28px;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.MarketingSolutions-module__hxUPaG__btnLime {
+  color: #000;
+  background: #b8e000;
+  border-radius: 6px;
+  padding: 14px 30px;
+  font-size: 15px;
+  font-weight: 700;
+  transition: transform .2s, box-shadow .2s;
+  display: inline-block;
+}
+
+.MarketingSolutions-module__hxUPaG__btnLime:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px #b8e00059;
+}
+
+@media (max-width: 1024px) {
+  .MarketingSolutions-module__hxUPaG__section {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 60px 32px;
+  }
+}
+
+/*# sourceMappingURL=app_components_MarketingSolutions_MarketingSolutions_module_css_bad6b30c._.single.css.map*/

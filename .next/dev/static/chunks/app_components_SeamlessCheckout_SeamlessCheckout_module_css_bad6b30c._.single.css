@@ -1,0 +1,118 @@
+/* [project]/app/components/SeamlessCheckout/SeamlessCheckout.module.css [app-client] (css) */
+.SeamlessCheckout-module__LYISRW__section {
+  background: #000;
+  padding: 80px 60px;
+}
+
+.SeamlessCheckout-module__LYISRW__header {
+  grid-template-columns: 1fr 1fr;
+  align-items: end;
+  gap: 40px;
+  margin-bottom: 36px;
+  display: grid;
+}
+
+.SeamlessCheckout-module__LYISRW__tag {
+  color: #b8e000;
+  background: #1a2a00;
+  border-radius: 999px;
+  margin-bottom: 16px;
+  padding: 5px 14px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.SeamlessCheckout-module__LYISRW__title {
+  text-transform: uppercase;
+  color: #fff;
+  font-family: Anton, Inter, sans-serif;
+  font-size: clamp(36px, 4.5vw, 64px);
+  font-weight: 900;
+  line-height: .92;
+}
+
+.SeamlessCheckout-module__LYISRW__desc {
+  color: #aaa;
+  max-width: 380px;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.SeamlessCheckout-module__LYISRW__tabs {
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 28px;
+  display: flex;
+}
+
+.SeamlessCheckout-module__LYISRW__tab {
+  color: #888;
+  cursor: pointer;
+  background: none;
+  border: 1px solid #333;
+  border-radius: 999px;
+  padding: 10px 20px;
+  font-size: 14px;
+  transition: all .2s;
+}
+
+.SeamlessCheckout-module__LYISRW__tabActive, .SeamlessCheckout-module__LYISRW__tab:hover {
+  color: #000;
+  background: #fff;
+  border-color: #fff;
+}
+
+.SeamlessCheckout-module__LYISRW__cards {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  display: grid;
+}
+
+.SeamlessCheckout-module__LYISRW__card {
+  opacity: .45;
+  background: #111;
+  border: 1.5px solid #222;
+  border-radius: 20px;
+  padding: 28px;
+  transition: border-color .2s, opacity .2s;
+}
+
+.SeamlessCheckout-module__LYISRW__cardActive {
+  opacity: 1;
+  border-color: #444;
+}
+
+.SeamlessCheckout-module__LYISRW__card:hover {
+  opacity: 1;
+  border-color: #555;
+}
+
+.SeamlessCheckout-module__LYISRW__cardTitle {
+  color: #fff;
+  margin-bottom: 14px;
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.SeamlessCheckout-module__LYISRW__cardBody {
+  color: #888;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+@media (max-width: 1024px) {
+  .SeamlessCheckout-module__LYISRW__section {
+    padding: 60px 32px;
+  }
+
+  .SeamlessCheckout-module__LYISRW__header, .SeamlessCheckout-module__LYISRW__cards {
+    grid-template-columns: 1fr;
+  }
+
+  .SeamlessCheckout-module__LYISRW__card {
+    opacity: 1;
+  }
+}
+
+/*# sourceMappingURL=app_components_SeamlessCheckout_SeamlessCheckout_module_css_bad6b30c._.single.css.map*/

@@ -1,0 +1,214 @@
+/* [project]/app/components/Footer/Footer.module.css [app-client] (css) */
+.Footer-module__JGhRua__footer {
+  background: #000;
+  padding: 0 60px 40px;
+}
+
+.Footer-module__JGhRua__inner {
+  border-bottom: 1px solid #1a1a1a;
+  grid-template-columns: 280px 1fr auto;
+  gap: 48px;
+  padding-top: 60px;
+  padding-bottom: 40px;
+  display: grid;
+}
+
+.Footer-module__JGhRua__brand {
+  flex-direction: column;
+  gap: 16px;
+  display: flex;
+}
+
+.Footer-module__JGhRua__logoRow {
+  align-items: center;
+  gap: 10px;
+  display: flex;
+}
+
+.Footer-module__JGhRua__brandName {
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: -.5px;
+  font-size: 18px;
+  font-weight: 800;
+}
+
+.Footer-module__JGhRua__brandTagline {
+  color: #555;
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.65;
+}
+
+.Footer-module__JGhRua__left {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  display: grid;
+}
+
+.Footer-module__JGhRua__colTitle {
+  color: gold;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  margin-bottom: 16px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.Footer-module__JGhRua__col ul {
+  list-style: none;
+}
+
+.Footer-module__JGhRua__col ul li {
+  margin-bottom: 10px;
+}
+
+.Footer-module__JGhRua__col ul li a {
+  color: #666;
+  font-size: 13px;
+  transition: color .2s;
+}
+
+.Footer-module__JGhRua__col ul li a:hover {
+  color: gold;
+}
+
+.Footer-module__JGhRua__right {
+  min-width: 220px;
+}
+
+.Footer-module__JGhRua__contactCard {
+  background: none;
+  border: 1px solid #1f1f1f;
+  border-radius: 20px;
+  padding: 24px;
+}
+
+.Footer-module__JGhRua__contactTitle {
+  color: #fff;
+  text-align: center;
+  margin-bottom: 16px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.Footer-module__JGhRua__btnCTA {
+  color: #000;
+  text-align: center;
+  background: gold;
+  border-radius: 8px;
+  margin-bottom: 14px;
+  padding: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: background .2s;
+  display: block;
+}
+
+.Footer-module__JGhRua__btnCTA:hover {
+  background: #e5c400;
+}
+
+.Footer-module__JGhRua__emailLabel {
+  color: #555;
+  text-align: center;
+  font-size: 12px;
+}
+
+.Footer-module__JGhRua__email {
+  color: #888;
+  text-align: center;
+  word-break: break-all;
+  margin-top: 4px;
+  font-size: 12px;
+  transition: color .2s;
+  display: block;
+}
+
+.Footer-module__JGhRua__email:hover {
+  color: gold;
+}
+
+.Footer-module__JGhRua__bottom {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+  display: flex;
+}
+
+.Footer-module__JGhRua__copy {
+  color: #444;
+  font-size: 12px;
+}
+
+.Footer-module__JGhRua__social {
+  gap: 10px;
+  display: flex;
+}
+
+.Footer-module__JGhRua__social a {
+  color: #666;
+  border: 1px solid #222;
+  border-radius: 50%;
+  justify-content: center;
+  align-items: center;
+  width: 34px;
+  height: 34px;
+  font-size: 12px;
+  transition: all .2s;
+  display: flex;
+}
+
+.Footer-module__JGhRua__social a:hover {
+  color: gold;
+  border-color: gold;
+}
+
+.Footer-module__JGhRua__bottomLinks {
+  gap: 18px;
+  display: flex;
+}
+
+.Footer-module__JGhRua__bottomLinks a {
+  color: #444;
+  font-size: 12px;
+  transition: color .2s;
+}
+
+.Footer-module__JGhRua__bottomLinks a:hover {
+  color: #aaa;
+}
+
+@media (max-width: 1200px) {
+  .Footer-module__JGhRua__inner {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .Footer-module__JGhRua__brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 768px) {
+  .Footer-module__JGhRua__footer {
+    padding: 0 24px 32px;
+  }
+
+  .Footer-module__JGhRua__inner {
+    grid-template-columns: 1fr;
+  }
+
+  .Footer-module__JGhRua__left {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .Footer-module__JGhRua__left {
+    grid-template-columns: 1fr;
+  }
+}
+
+/*# sourceMappingURL=app_components_Footer_Footer_module_css_bad6b30c._.single.css.map*/

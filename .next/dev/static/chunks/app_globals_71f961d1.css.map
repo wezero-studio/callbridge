@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 2, "column": 0}, "map": {"version":3,"sources":["file:///D:/JOB/callbridge/pjn/app/globals.css"],"sourcesContent":["@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Anton&display=swap');\n\n*,\n*::before,\n*::after {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n}\n\n:root {\n  --yellow: #FDDD23;\n  --black: #000000;\n  --dark: #111111;\n  --dark2: #1a1a1a;\n  --dark-card: #1c1c1c;\n  --gray-card: #2a2a2a;\n  --off-white: #F0EDE6;\n  --sand: #C8C5B0;\n  --white: #ffffff;\n  --text-gray: #aaaaaa;\n  --text-muted: #777;\n}\n\nhtml {\n  scroll-behavior: smooth;\n}\n\nbody {\n  font-family: 'Inter', sans-serif;\n  background: var(--black);\n  color: var(--white);\n  overflow-x: hidden;\n}\n\na {\n  text-decoration: none;\n  color: inherit;\n}\n\nbutton {\n  font-family: inherit;\n}"],"names":[],"mappings":"AAEA;;;;;;AAQA;;;;;;;;;;;;;;AAcA;;;;AAIA;;;;;;;AAOA;;;;;AAKA"}}]
+}
