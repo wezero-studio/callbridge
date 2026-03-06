@@ -35,15 +35,17 @@ export default function PaymentCards() {
 
     useEffect(() => {
         const handleScroll = () => {
-            cardRefs.current.forEach((card) => {
+            cardRefs.current.forEach((card, index) => {
                 if (!card) return;
 
                 const rect = card.getBoundingClientRect();
                 const windowHeight = window.innerHeight;
 
                 // Animation starts when card is ~10% visible; fully spread when 65% visible.
-                const start = windowHeight * 0.9;
-                const end = windowHeight * 0.35;
+                // We offset the second card by 20% of the screen height so it waits briefly for the first.
+                const offset = windowHeight * 0.2 * index;
+                const start = (windowHeight * 0.9) - offset;
+                const end = (windowHeight * 0.35) - offset;
 
                 let progress = (start - rect.top) / (start - end);
                 progress = Math.max(0, Math.min(1, progress));
