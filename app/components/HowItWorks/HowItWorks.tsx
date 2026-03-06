@@ -73,6 +73,21 @@ const PEEK = 80; // px
 export default function HowItWorks() {
     const outerRef = useRef<HTMLDivElement>(null);
     const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+    const stageHeightRef = useRef(700);
+
+    useEffect(() => {
+        const updateDims = () => {
+            if (outerRef.current) {
+                const stageEl = outerRef.current.querySelector<HTMLDivElement>('[data-stage]');
+                if (stageEl) {
+                    stageHeightRef.current = stageEl.offsetHeight;
+                }
+            }
+        };
+        updateDims();
+        window.addEventListener('resize', updateDims, { passive: true });
+        return () => window.removeEventListener('resize', updateDims);
+    }, []);
 
     const updateCards = useCallback(() => {
         if (!outerRef.current) return;
@@ -80,9 +95,8 @@ export default function HowItWorks() {
         // sectionTop < 0 means we've scrolled into the section
         const scrolled = -sectionTop; // 0 at start of section, positive as we scroll down
 
-        // Cache stage height outside the loop to prevent layout thrashing on scroll
-        const stageEl = outerRef.current.querySelector<HTMLDivElement>('[data-stage]');
-        const stageHeight = stageEl?.offsetHeight ?? 700;
+        // Cache stage height from resize listener to prevent layout thrashing on scroll
+        const stageHeight = stageHeightRef.current;
 
         CARDS.forEach((_, i) => {
             const el = cardRefs.current[i];
@@ -100,9 +114,9 @@ export default function HowItWorks() {
             // The card enters from below (100% height) and settles at its peek offset
             const finalTop = PEEK * i; // px from top of stage where card settles
             const startTranslate = stageHeight - PEEK * i; // enters from bottom
-            const translateY = startTranslate * (1 - t);
+            const translateY = Math.round(startTranslate * (1 - t) * 100) / 100;
 
-            el.style.transform = `translateY(${i === 0 ? 0 : translateY}px)`;
+            el.style.transform = `translate3d(0, ${i === 0 ? 0 : translateY}px, 0)`;
         });
     }, []);
 
@@ -149,7 +163,7 @@ export default function HowItWorks() {
                                 zIndex: i + 1,
                                 top: `${PEEK * i}px`,
                                 // Cards 2-4 start off-screen below; Card 1 starts visible
-                                transform: i === 0 ? 'translateY(0)' : `translateY(100%)`,
+                                transform: i === 0 ? 'translate3d(0, 0px, 0)' : `translate3d(0, 100%, 0)`,
                             }}
                         >
                             <div className={styles.top}>
