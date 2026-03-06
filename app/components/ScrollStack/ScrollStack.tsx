@@ -189,7 +189,6 @@ const ScrollStack = ({
             const lenis = new Lenis({
                 duration: 1.2,
                 easing: (t: any) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                // @ts-ignore
                 smoothWheel: true,
                 touchMultiplier: 2,
                 infinite: false,
@@ -197,7 +196,7 @@ const ScrollStack = ({
                 lerp: 0.1,
                 syncTouch: true,
                 syncTouchLerp: 0.075
-            });
+            } as any);
 
             lenis.on('scroll', handleScroll);
 
@@ -218,7 +217,6 @@ const ScrollStack = ({
                 content: scroller.querySelector('.scroll-stack-inner'),
                 duration: 1.2,
                 easing: (t: any) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                // @ts-ignore
                 smoothWheel: true,
                 touchMultiplier: 2,
                 infinite: false,
@@ -229,9 +227,8 @@ const ScrollStack = ({
                 lerp: 0.1,
                 syncTouch: true,
                 syncTouchLerp: 0.075,
-                // @ts-ignore
                 touchInertia: 0.6
-            });
+            } as any);
 
             lenis.on('scroll', handleScroll);
 
