@@ -84,10 +84,10 @@ export default function HowItWorks() {
             const el = cardRefs.current[i];
             if (!el) return;
 
-            // Each card starts animating in at scrolled = i * SCROLL_PER_CARD
-            // and is fully in at scrolled = (i + 1) * SCROLL_PER_CARD
-            const start = i * SCROLL_PER_CARD;
-            const end = (i + 1) * SCROLL_PER_CARD;
+            // Card 1 starts exactly at 0.
+            // Card 2 starts after just a short 200px gap.
+            // Cards 3 and 4 follow sequentially after.
+            const start = i === 0 ? 0 : 200 + (i - 1) * SCROLL_PER_CARD;
             const t = Math.max(0, Math.min(1, (scrolled - start) / SCROLL_PER_CARD));
 
             // Card 0 is always visible (translateY: 0 from start)
@@ -104,15 +104,27 @@ export default function HowItWorks() {
     }, []);
 
     useEffect(() => {
-        window.addEventListener('scroll', updateCards, { passive: true });
+        let ticking = false;
+
+        const onScroll = () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    updateCards();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        };
+
+        window.addEventListener('scroll', onScroll, { passive: true });
         updateCards(); // run on mount
-        return () => window.removeEventListener('scroll', updateCards);
+        return () => window.removeEventListener('scroll', onScroll);
     }, [updateCards]);
 
-    // Total section height = N × scroll-per-card (animation travel)
-    //   + 100vh to compensate for sticky stage height (so sticky travel = N × SCROLL_PER_CARD)
-    //   + 600px dwell so all 4 cards stay visible briefly before the section exits
-    const totalScrollTrack = CARDS.length * SCROLL_PER_CARD;
+    // Total section height = 200px explicit dwell + (cards-1) × scroll-per-card
+    //   + 100vh to compensate for sticky stage height
+    //   + 200px dwell so all 4 cards stay visible briefly before the section exits
+    const totalScrollTrack = 200 + (CARDS.length - 1) * SCROLL_PER_CARD;
 
     return (
         <div ref={outerRef} className={styles.outerWrapper} style={{ height: `calc(${totalScrollTrack}px + 100vh + 200px)` }}>
@@ -133,6 +145,8 @@ export default function HowItWorks() {
                                 color: card.color,
                                 zIndex: i + 1,
                                 top: `${PEEK * i}px`,
+                                // Smooths out the JS-calculated transforms on low-refresh monitors
+                                transition: 'transform 0.1s ease-out',
                                 // Cards 2-4 start off-screen below; Card 1 starts visible
                                 transform: i === 0 ? 'translateY(0)' : `translateY(100%)`,
                             }}
