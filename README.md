@@ -1,61 +1,36 @@
-# Call Bridge - Exclusive Live Insurance Leads
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-Call Bridge is a premium, high-performance lead generation platform designed for insurance agencies. We deliver pre-qualified, exclusive live transfers in real-time, focusing on high-intent prospects for Medicare, ACA, Final Expense, and more.
+## Getting Started
 
-## 🚀 Key Features
+First, run the development server:
 
-- **Live Transfers**: Connect instantly with seniors and prospects actively searching for coverage.
-- **Pre-Qualified Leads**: Every prospect is verified for eligibility, location, and interest.
-- **Bento-style "Why Choose Us"**: Modern, grid-based layout highlighting our performance advantages.
-- **Interactive "How It Works"**: Smooth, scroll-driven card stacking animation explaining our process.
-- **Responsive Design**: Fully optimized for desktop, tablet, and mobile devices.
-- **Premium Aesthetics**: Modern dark theme with vibrant yellow accents and glassmorphism effects.
+```bash
+npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
+```
 
-## 🛠️ Tech Stack
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-- **Framework**: [Next.js](https://nextjs.org/) (App Router)
-- **Styling**: Vanilla CSS Modules (Modern & Dynamic)
-- **Icons**: Custom SVG icons
-- **Animations**: CSS Transitions, Keyframes, and JS-controlled scroll tracking
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-## 💻 Getting Started
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-### Prerequisites
+## Learn More
 
-- Node.js 18.x or later
-- npm or yarn
+To learn more about Next.js, take a look at the following resources:
 
-### Installation
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/wezero-studio/callbridge.git
-   ```
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-2. Navigate to the project directory:
-   ```bash
-   cd callbridge/pjn
-   ```
+## Deploy on Vercel
 
-3. Install dependencies:
-   ```bash
-   npm install
-   ```
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-4. Run the development server:
-   ```bash
-   npm run dev
-   ```
-
-5. Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-## 📁 Project Structure
-
-- `app/`: Next.js App Router files.
-- `app/components/`: Reusable UI components (Hero, LeadTypes, WhyChooseUs, etc.).
-- `app/components/*.module.css`: Scoped CSS modules for each component.
-- `public/`: Static assets (images, icons).
-
-## 📄 License
-
-© 2026 Call Bridge. All Rights Reserved.
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
