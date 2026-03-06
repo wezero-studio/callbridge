@@ -8,7 +8,7 @@
 .stage {
     position: sticky;
     top: 0;
-    height: 100vh;
+    height: 100svh;
     overflow: hidden;
     background: #000;
     display: flex;
@@ -55,6 +55,7 @@
     box-shadow: 0 -4px 40px rgba(0, 0, 0, 0.3);
     will-change: transform;
     overflow: hidden;
+    transition: transform 0.1s ease-out; /* Smooths out JS transforms on desktop */
 }
 
 .top {
@@ -102,6 +103,12 @@
 @media (max-width: 1024px) {
     .stickyCard {
         padding: 36px 32px;
+    }
+}
+
+@media (max-width: 768px) {
+    .stickyCard {
+        transition: none; /* Disable transition on mobile to prevent scroll lag/glitching */
     }
 }
 

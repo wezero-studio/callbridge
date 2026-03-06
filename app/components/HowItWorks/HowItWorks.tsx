@@ -80,6 +80,10 @@ export default function HowItWorks() {
         // sectionTop < 0 means we've scrolled into the section
         const scrolled = -sectionTop; // 0 at start of section, positive as we scroll down
 
+        // Cache stage height outside the loop to prevent layout thrashing on scroll
+        const stageEl = outerRef.current.querySelector<HTMLDivElement>('[data-stage]');
+        const stageHeight = stageEl?.offsetHeight ?? 700;
+
         CARDS.forEach((_, i) => {
             const el = cardRefs.current[i];
             if (!el) return;
@@ -95,7 +99,6 @@ export default function HowItWorks() {
             // Final position: each card is offset by PEEK * i from the top of the stage
             // The card enters from below (100% height) and settles at its peek offset
             const finalTop = PEEK * i; // px from top of stage where card settles
-            const stageHeight = outerRef.current!.querySelector<HTMLDivElement>('[data-stage]')?.offsetHeight ?? 700;
             const startTranslate = stageHeight - PEEK * i; // enters from bottom
             const translateY = startTranslate * (1 - t);
 
@@ -122,12 +125,12 @@ export default function HowItWorks() {
     }, [updateCards]);
 
     // Total section height = 200px explicit dwell + (cards-1) × scroll-per-card
-    //   + 100vh to compensate for sticky stage height
+    //   + 100svh to compensate for sticky stage height
     //   + 200px dwell so all 4 cards stay visible briefly before the section exits
     const totalScrollTrack = 200 + (CARDS.length - 1) * SCROLL_PER_CARD;
 
     return (
-        <div ref={outerRef} className={styles.outerWrapper} style={{ height: `calc(${totalScrollTrack}px + 100vh + 200px)` }}>
+        <div ref={outerRef} className={styles.outerWrapper} style={{ height: `calc(${totalScrollTrack}px + 100svh + 200px)` }}>
             {/* Sticky stage that stays pinned while outer scrolls */}
             <div className={styles.stage} data-stage>
                 <div className={styles.header}>
@@ -145,8 +148,6 @@ export default function HowItWorks() {
                                 color: card.color,
                                 zIndex: i + 1,
                                 top: `${PEEK * i}px`,
-                                // Smooths out the JS-calculated transforms on low-refresh monitors
-                                transition: 'transform 0.1s ease-out',
                                 // Cards 2-4 start off-screen below; Card 1 starts visible
                                 transform: i === 0 ? 'translateY(0)' : `translateY(100%)`,
                             }}
