@@ -1,0 +1,101 @@
+.section {
+    background: #000;
+    padding: 80px 60px;
+}
+
+.layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 60px;
+    align-items: start;
+}
+
+.heading {
+    font-family: 'Anton', sans-serif;
+    font-size: clamp(36px, 4vw, 60px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.92;
+    color: #fff;
+    margin-bottom: 32px;
+}
+
+.navBtns {
+    display: flex;
+    gap: 10px;
+}
+
+.navBtn {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    border: 1.5px solid #444;
+    background: transparent;
+    color: #fff;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.navBtn:hover {
+    background: #222;
+    border-color: #666;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.card {
+    background: #F0EDE6;
+    border-radius: 24px;
+    padding: 32px;
+}
+
+.logo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.role {
+    font-size: 12px;
+    color: #666;
+    margin-bottom: 4px;
+}
+
+.name {
+    font-size: 22px;
+    font-weight: 600;
+    color: #000;
+    margin-bottom: 14px;
+}
+
+.text {
+    font-size: 13px;
+    color: #444;
+    line-height: 1.7;
+}
+
+@media (max-width: 1024px) {
+    .section {
+        padding: 60px 32px;
+    }
+
+    .layout {
+        grid-template-columns: 1fr;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,163 @@
+/* Removed top bar */
+
+.nav {
+    background: #e8e8e8;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 32px;
+    height: 66px;
+    border-radius: 12px;
+    max-width: 1360px;
+    margin: 0 auto;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.4);
+}
+
+.navLogo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logoIcon {
+    display: flex;
+}
+
+.logoIcon {
+    display: flex;
+}
+
+.logoText {
+    display: flex;
+    flex-direction: column;
+}
+
+.brandName {
+    font-size: 20px;
+    font-weight: 800;
+    color: #000;
+    letter-spacing: -0.5px;
+    text-transform: uppercase;
+}
+
+.brandSub {
+    font-size: 10px;
+    color: #555;
+}
+
+.navLinks {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    list-style: none;
+}
+
+.navItem {
+    position: relative;
+}
+
+.navItem>a {
+    font-size: 14px;
+    color: #111;
+    font-weight: 500;
+    padding: 8px 14px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: background 0.2s;
+}
+
+.navItem:hover>a {
+    background: #e8e5de;
+}
+
+.chevron {
+    font-size: 11px;
+    opacity: 0.5;
+}
+
+.dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    background: #fff;
+    border: 1px solid #e0ddd6;
+    border-radius: 12px;
+    min-width: 220px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+    display: none;
+    padding: 8px;
+    z-index: 200;
+}
+
+.navItem:hover .dropdown {
+    display: block;
+}
+
+.dropdown a {
+    display: block;
+    font-size: 13px;
+    color: #222;
+    padding: 9px 14px;
+    border-radius: 8px;
+    transition: background 0.15s;
+}
+
+.dropdown a:hover {
+    background: #f5f4f0;
+}
+
+.dropdownSectionTitle {
+    font-size: 11px;
+    font-weight: 600;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: 8px 14px 4px;
+}
+
+.navActions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btnLogin {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 9px 20px;
+    border: 1.5px solid #333;
+    border-radius: 6px;
+    color: #000;
+    transition: all 0.2s;
+}
+
+.btnLogin:hover {
+    background: #111;
+    color: #fff;
+}
+
+.btnApply {
+    font-size: 14px;
+    font-weight: 700;
+    padding: 9px 20px;
+    background: var(--yellow);
+    color: #000;
+    border-radius: 6px;
+    transition: background 0.2s;
+}
+
+.btnApply:hover {
+    background: #e5c720;
+}
+
+@media (max-width: 900px) {
+    .navLinks {
+        display: none;
+    }
+
+    .nav {
+        padding: 0 16px;
+    }
+}

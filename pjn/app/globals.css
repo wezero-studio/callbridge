@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Anton&display=swap');
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --yellow: #FDDD23;
+  --black: #000000;
+  --dark: #111111;
+  --dark2: #1a1a1a;
+  --dark-card: #1c1c1c;
+  --gray-card: #2a2a2a;
+  --off-white: #F0EDE6;
+  --sand: #C8C5B0;
+  --white: #ffffff;
+  --text-gray: #aaaaaa;
+  --text-muted: #777;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--black);
+  color: var(--white);
+  overflow-x: hidden;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: inherit;
+}

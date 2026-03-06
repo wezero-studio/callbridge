@@ -1,0 +1,276 @@
+.section {
+    background: #000;
+    padding: 60px 40px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.tag {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 6px 16px;
+    border-radius: 999px;
+    background: #FFD700;
+    color: #000;
+    margin-bottom: 12px;
+}
+
+.title {
+    font-family: 'Anton', 'Inter', sans-serif;
+    font-size: clamp(32px, 3.5vw, 56px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.92;
+    color: #fff;
+    margin: 0;
+}
+
+.desc {
+    font-size: 14px;
+    color: #aaa;
+    line-height: 1.6;
+    max-width: 400px;
+    margin: 0;
+}
+
+/* =====================
+   BENTO GRID LAYOUT
+   ===================== */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    gap: 16px;
+}
+
+/* Left Column */
+.colLeft {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Right Column */
+.colRight {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.topRightRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr auto;
+    gap: 16px;
+}
+
+.bottomRightRow {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 16px;
+    flex: 1;
+}
+
+/* =====================
+   CARD STYLES
+   ===================== */
+.card {
+    background: #000;
+    border: 1px solid #fff;
+    border-radius: 32px;
+    padding: 32px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    transition: border-color 0.4s ease;
+    cursor: pointer;
+}
+
+.pillCard {
+    padding: 20px;
+    border-radius: 100px;
+    align-items: center;
+}
+
+.largeCenterCard {
+    flex: 1;
+    border-radius: 32px;
+    justify-content: center;
+}
+
+.card:hover {
+    border-color: #000;
+}
+
+/* Content sits strictly above the sweep */
+.cardContent {
+    position: relative;
+    z-index: 1;
+}
+
+.cardTitle {
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: #fff;
+    margin-bottom: 14px;
+    transition: color 0.3s ease 0.15s;
+}
+
+.cardTitleCenter {
+    font-size: 18px;
+    font-weight: 500;
+    color: #fff;
+    margin: 0;
+    transition: color 0.3s ease 0.15s;
+    text-align: center;
+}
+
+.card:hover .cardTitle,
+.card:hover .cardTitleCenter {
+    color: #000;
+}
+
+.cardBody {
+    font-size: 14px;
+    color: #aaa;
+    line-height: 1.65;
+    margin: 0;
+    transition: color 0.3s ease 0.1s;
+}
+
+.card:hover .cardBody {
+    color: #111;
+}
+
+/* =====================
+   ICONS & UTILITY BLOCKS
+   ===================== */
+.iconGrid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: repeat(3, auto);
+    gap: 8px;
+}
+
+.topRightRow .iconGrid {
+    grid-template-columns: auto auto;
+    grid-template-rows: auto auto;
+}
+
+.topRightRow .iconGrid .iconCircle:first-child {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+}
+
+.topRightRow .iconGrid .iconCircle:nth-child(2) {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+}
+
+.topRightRow .iconGrid .iconCircle:nth-child(3) {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+}
+
+.iconCircle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    transition: background 0.4s ease, color 0.4s ease;
+}
+
+.iconCircle:hover {
+    background: #fff;
+    color: #000;
+    cursor: pointer;
+}
+
+.verticalBrandCard {
+    border: 1px solid #fff;
+    border-radius: 30px;
+    width: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    color: #fff;
+    font-weight: 700;
+    font-size: 18px;
+    letter-spacing: 0.1em;
+    padding: 30px 0;
+}
+
+/* =====================
+   CIRCULAR SWEEP OVERLAY
+   ===================== */
+.sweep {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: #fff;
+    clip-path: circle(0% at 10% 90%);
+    transition: clip-path 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    border-radius: inherit;
+}
+
+.card:hover .sweep {
+    clip-path: circle(180% at 10% 90%);
+}
+
+/* =====================
+   RESPONSIVE
+   ===================== */
+@media (max-width: 1024px) {
+    .section {
+        padding: 70px 32px;
+    }
+
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 24px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .topRightRow {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .iconGrid {
+        display: none;
+        /* Hide complex icons on mobile for simplicity */
+    }
+
+    .verticalBrandCard {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .card {
+        padding: 32px 24px;
+        border-radius: 30px;
+    }
+}

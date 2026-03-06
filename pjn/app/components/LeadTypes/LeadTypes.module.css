@@ -1,0 +1,206 @@
+.section {
+    background: #000;
+    padding: 100px 60px;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* =====================
+   HEADER — top-left
+   ===================== */
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 56px;
+    max-width: 560px;
+}
+
+.eyebrow {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #888;
+    margin: 0;
+}
+
+.title {
+    font-family: 'Anton', 'Inter', sans-serif;
+    font-size: clamp(44px, 5.5vw, 80px);
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 0.92;
+    color: #fff;
+    margin: 0;
+}
+
+.subtitle {
+    font-size: 15px;
+    color: #fff;
+    opacity: 0.8;
+    line-height: 1.7;
+    margin: 0;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* =====================
+   GRID — 3 cards in a row below heading
+   ===================== */
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+/* =====================
+   CARD
+   ===================== */
+.card {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border-radius: 24px;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+/* =====================
+   IMAGE — no sweep, just zoom + corner effect
+   ===================== */
+.imgBox {
+    width: 100%;
+    height: 320px;
+    overflow: hidden;
+    border-radius: 20px;
+    transition: border-radius 0.5s ease;
+}
+
+.card:hover .imgBox {
+    border-radius: 32px;
+}
+
+.img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card:hover .img {
+    transform: scale(1.07);
+}
+
+/* =====================
+   TEXT SECTION — sweep is scoped here only
+   ===================== */
+.textSection {
+    position: relative;
+    overflow: hidden;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+/* Circle expands from bottom-left of the textSection */
+.sweep {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    background: #fff;
+    clip-path: circle(0% at 10% 95%);
+    transition: clip-path 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+}
+
+.card:hover .sweep {
+    clip-path: circle(160% at 10% 95%);
+}
+
+/* =====================
+   TITLE PILL
+   ===================== */
+.titleBox {
+    border: 1px solid #fff;
+    border-radius: 100px;
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    transition: border-color 0.5s ease;
+}
+
+.card:hover .titleBox {
+    border-color: #000;
+}
+
+.cardTitle {
+    font-family: 'Anton', 'Inter', sans-serif;
+    font-size: clamp(18px, 1.8vw, 24px);
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    text-align: center;
+    transition: color 0.3s ease 0.15s;
+    position: relative;
+}
+
+.card:hover .cardTitle {
+    color: #000;
+}
+
+/* =====================
+   DESC BOX
+   ===================== */
+.descBox {
+    border: 1px solid #fff;
+    border-radius: 20px;
+    padding: 24px 28px;
+    position: relative;
+    z-index: 1;
+    transition: border-color 0.5s ease;
+}
+
+.card:hover .descBox {
+    border-color: #000;
+}
+
+.cardDesc {
+    font-size: 15px;
+    color: #ccc;
+    line-height: 1.7;
+    margin: 0;
+    transition: color 0.3s ease 0.15s;
+    position: relative;
+}
+
+.card:hover .cardDesc {
+    color: #111;
+}
+
+/* =====================
+   RESPONSIVE
+   ===================== */
+@media (max-width: 1024px) {
+    .section {
+        padding: 70px 32px;
+    }
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .imgBox {
+        height: 220px;
+    }
+}
