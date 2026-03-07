@@ -68,7 +68,8 @@ const CARDS = [
 // Each card gets this many pixels of scroll travel to animate into view
 const SCROLL_PER_CARD = 500;
 // Peek strip height — how much of the card below shows above the incoming card
-const PEEK = 80; // px
+// Reduced to 40px to give Card 4 significantly more room without shrinking Card 1
+const PEEK = 40; // px
 
 export default function HowItWorks() {
     const outerRef = useRef<HTMLDivElement>(null);
@@ -138,7 +139,9 @@ export default function HowItWorks() {
         return () => window.removeEventListener('scroll', onScroll);
     }, [updateCards]);
 
-    const totalScrollTrack = 200 + (CARDS.length - 1) * SCROLL_PER_CARD;
+    // Add a short "dwell" on desktop so LeadTypes doesn't immediately cover Card 4
+    const dwell = typeof window !== 'undefined' && window.innerWidth <= 640 ? 0 : 200;
+    const totalScrollTrack = 200 + (CARDS.length - 1) * SCROLL_PER_CARD + dwell;
     // Match the CSS: stage is 86svh on mobile (<= 640px), 100svh on desktop
     const stageH = typeof window !== 'undefined' && window.innerWidth <= 640 ? '86svh' : '100svh';
 
