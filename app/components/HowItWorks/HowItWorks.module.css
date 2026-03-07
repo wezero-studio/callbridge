@@ -1,3 +1,8 @@
+.section {
+    position: relative;
+    background: #000;
+}
+
 /* Outer wrapper provides scroll track height — set inline from JS */
 .outerWrapper {
     position: relative;
@@ -128,6 +133,15 @@
 }
 
 @media (max-width: 640px) {
+
+    /* On small screens, reduce stage height so it doesn't leave a giant
+       empty gap below the stacked cards. Cards use bottom:0 so they
+       always fill to the base of the stage, but if the stage is too tall
+       the empty region above card-1 looks like dead space. */
+    .stage {
+        height: 86svh;
+    }
+
     .stickyCard {
         padding: 20px 16px;
         border-radius: 20px;
@@ -144,4 +158,45 @@
     .cardStack {
         margin: 0 10px 10px;
     }
+}
+
+@media (max-width: 640px) {
+
+    /* Hide the complex sticky desktop version completely on mobile */
+    .desktopOnly {
+        display: none !important;
+    }
+}
+
+/* =======================================
+   MOBILE-ONLY STATIC LAYOUT
+   ======================================= */
+.mobileOnly {
+    display: none;
+    padding: 60px 20px;
+}
+
+@media (max-width: 640px) {
+    .mobileOnly {
+        display: block;
+    }
+}
+
+.mobileHeader {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.mobileCardList {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.mobileCard {
+    border-radius: 20px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
 }

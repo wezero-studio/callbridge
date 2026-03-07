@@ -66,7 +66,7 @@ const CARDS = [
 ];
 
 // Each card gets this many pixels of scroll travel to animate into view
-const SCROLL_PER_CARD = 800;
+const SCROLL_PER_CARD = 500;
 // Peek strip height — how much of the card below shows above the incoming card
 const PEEK = 80; // px
 
@@ -138,32 +138,65 @@ export default function HowItWorks() {
         return () => window.removeEventListener('scroll', onScroll);
     }, [updateCards]);
 
-    // Total section height = 200px explicit dwell + (cards-1) × scroll-per-card
-    //   + 100svh to compensate for sticky stage height
-    //   + 200px dwell so all 4 cards stay visible briefly before the section exits
     const totalScrollTrack = 200 + (CARDS.length - 1) * SCROLL_PER_CARD;
+    // Match the CSS: stage is 86svh on mobile (<= 640px), 100svh on desktop
+    const stageH = typeof window !== 'undefined' && window.innerWidth <= 640 ? '86svh' : '100svh';
 
     return (
-        <div ref={outerRef} className={styles.outerWrapper} style={{ height: `calc(${totalScrollTrack}px + 100svh + 200px)` }}>
-            {/* Sticky stage that stays pinned while outer scrolls */}
-            <div className={styles.stage} data-stage>
-                <div className={styles.header}>
+        <section className={styles.section}>
+            {/* --- DESKTOP VIEW (Sticky Stacking Cards) --- */}
+            <div ref={outerRef} className={`${styles.outerWrapper} ${styles.desktopOnly}`} style={{ height: `calc(${totalScrollTrack}px + 100svh)` }}>
+                {/* Sticky stage that stays pinned while outer scrolls */}
+                <div className={styles.stage} data-stage>
+                    <div className={styles.header}>
+                        <h2 className={styles.title}>HOW IT WORKS</h2>
+                    </div>
+
+                    <div className={styles.cardStack}>
+                        {CARDS.map((card, i) => (
+                            <div
+                                key={card.step}
+                                ref={el => { cardRefs.current[i] = el; }}
+                                className={styles.stickyCard}
+                                style={{
+                                    background: card.bg,
+                                    color: card.color,
+                                    zIndex: i + 1,
+                                    top: `${PEEK * i}px`,
+                                    // Cards 2-4 start off-screen below; Card 1 starts visible
+                                    transform: i === 0 ? 'translate3d(0, 0px, 0)' : `translate3d(0, 100%, 0)`,
+                                }}
+                            >
+                                <div className={styles.top}>
+                                    <span className={styles.cardLabel}>{card.label}</span>
+                                    <span className={styles.cardIcon}><card.Icon /></span>
+                                </div>
+                                <p className={styles.cardDesc}>{card.desc}</p>
+                                <div
+                                    className={styles.cardValue}
+                                    style={{ color: card.color, fontSize: card.valueSize }}
+                                >
+                                    {card.step}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            {/* --- MOBILE VIEW (Simple Static Stack) --- */}
+            <div className={styles.mobileOnly}>
+                <div className={styles.mobileHeader}>
                     <h2 className={styles.title}>HOW IT WORKS</h2>
                 </div>
-
-                <div className={styles.cardStack}>
-                    {CARDS.map((card, i) => (
+                <div className={styles.mobileCardList}>
+                    {CARDS.map((card) => (
                         <div
                             key={card.step}
-                            ref={el => { cardRefs.current[i] = el; }}
-                            className={styles.stickyCard}
+                            className={styles.mobileCard}
                             style={{
                                 background: card.bg,
                                 color: card.color,
-                                zIndex: i + 1,
-                                top: `${PEEK * i}px`,
-                                // Cards 2-4 start off-screen below; Card 1 starts visible
-                                transform: i === 0 ? 'translate3d(0, 0px, 0)' : `translate3d(0, 100%, 0)`,
                             }}
                         >
                             <div className={styles.top}>
@@ -181,6 +214,6 @@ export default function HowItWorks() {
                     ))}
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
