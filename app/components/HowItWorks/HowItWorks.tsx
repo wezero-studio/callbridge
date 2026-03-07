@@ -68,8 +68,7 @@ const CARDS = [
 // Each card gets this many pixels of scroll travel to animate into view
 const SCROLL_PER_CARD = 500;
 // Peek strip height — how much of the card below shows above the incoming card
-// Reduced to 40px to give Card 4 significantly more room without shrinking Card 1
-const PEEK = 40; // px
+const PEEK = 32; // px
 
 export default function HowItWorks() {
     const outerRef = useRef<HTMLDivElement>(null);
@@ -166,6 +165,10 @@ export default function HowItWorks() {
                                     color: card.color,
                                     zIndex: i + 1,
                                     top: `${PEEK * i}px`,
+                                    // Make all cards identical height: 100% minus the maximum peek offset.
+                                    // This guarantees they are all the exact same massive size, and Card 4 
+                                    // ends perfectly flush with the bottom bounds without clipping.
+                                    height: `calc(100% - ${PEEK * (CARDS.length - 1)}px)`,
                                     // Cards 2-4 start off-screen below; Card 1 starts visible
                                     transform: i === 0 ? 'translate3d(0, 0px, 0)' : `translate3d(0, 100%, 0)`,
                                 }}

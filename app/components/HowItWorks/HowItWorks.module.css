@@ -42,7 +42,8 @@
 .cardStack {
     position: relative;
     flex: 1;
-    margin: 0 16px 16px;
+    margin: 0 16px 0;
+    /* No bottom margin, let cards stretch to the true bottom */
 }
 
 /* Each card is absolutely positioned within the stack */
@@ -50,8 +51,6 @@
     position: absolute;
     left: 0;
     right: 0;
-    bottom: 0;
-    /* Ensures all cards end identically flush, displaying their border radius */
     border-radius: 28px;
     padding: 40px 56px;
     display: flex;
